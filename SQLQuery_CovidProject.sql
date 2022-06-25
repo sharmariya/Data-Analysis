@@ -58,7 +58,7 @@ with PopvsVac(Continent, Location, Date, Population,New_Vaccinations, RollingPeo
 as
 (
 select d.continent,d.location,d.date,d.population,v.new_vaccinations,
-sum(CONVERT(int,v.new_vaccinations)) over (partition by d.location order by d.location, d.date) as RollingPeopleVaccinated --gradually number of vaccines for aparticular location are added according to date and location
+sum(CONVERT(int,v.new_vaccinations)) over (partition by d.location order by d.location, d.date) as RollingPeopleVaccinated --gradually number of vaccines for a particular location are added according to date and location
 from CovidProject..CovidDeaths$ d
 join CovidProject..CovidVaccinations$ v
 on d.location= v.location
@@ -80,7 +80,7 @@ New_vaccinations numeric,
 RollingPeopleVaccinated numeric)
 insert into percentPopulationVaccinated
 select d.continent,d.location,d.date,d.population,v.new_vaccinations,
-sum(CONVERT(int,v.new_vaccinations)) over (partition by d.location order by d.location, d.date) as RollingPeopleVaccinated --gradually number of vaccines for aparticular location are added according to date and location
+sum(CONVERT(int,v.new_vaccinations)) over (partition by d.location order by d.location, d.date) as RollingPeopleVaccinated 
 from CovidProject..CovidDeaths$ d
 join CovidProject..CovidVaccinations$ v
 on d.location= v.location
@@ -92,7 +92,7 @@ from percentPopulationVaccinated
 --creating view to store data for visualization
 create view percentPopulationVaccinatedview as
 select d.continent,d.location,d.date,d.population,v.new_vaccinations,
-sum(CONVERT(int,v.new_vaccinations)) over (partition by d.location order by d.location, d.date) as RollingPeopleVaccinated --gradually number of vaccines for aparticular location are added according to date and location
+sum(CONVERT(int,v.new_vaccinations)) over (partition by d.location order by d.location, d.date) as RollingPeopleVaccinated
 from CovidProject..CovidDeaths$ d
 join CovidProject..CovidVaccinations$ v
 on d.location= v.location
