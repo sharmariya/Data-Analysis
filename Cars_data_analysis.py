@@ -72,14 +72,3 @@ df['MPG_City']=df['MPG_City'].apply(lambda x:x+3)
 df
 
 
-# In[70]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
