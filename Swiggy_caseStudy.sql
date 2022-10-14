@@ -40,16 +40,10 @@ having sum(o.amount)>700
 order by 2 desc
  
  --Show all orders with order details for a particular customer in a particular date range
- select * from users$
- select * from order_details$
- select * from orders$
- select * from menu$
- select * from restaurants$
- select * from food$
+
 
  select o.order_id, r.r_name,f.f_name
- from --users$ u join orders$ o 
- --on u.user_id=o.user_id
+ from 
  orders$ o
  join restaurants$ r on o.r_id= r.r_id
  join menu$ m on r.r_id= m.r_id
