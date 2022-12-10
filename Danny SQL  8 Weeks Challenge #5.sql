@@ -190,9 +190,6 @@ from
  from sales_tab
 
 
- select distinct(dateadd(week, -12, '2020-06-15')) as Date_Before, 
-(dateadd(week, 12, '2020-06-15')) as Date_After
-from clean_weekly_sales;
 
 
  --3. How do the sale metrics for these 2 periods before and after compare with the previous years in 2018 and 2019?
