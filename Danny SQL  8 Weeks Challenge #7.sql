@@ -126,7 +126,7 @@ from sales s
 join product_details pd on s.prod_id = pd.product_id
 group by category_name
 
---10. What is the total transaction “penetration” for each product? (hint: penetration = number of transactions where at least 1 quantity of a product was purchased divided by total number of transactions)
+--9. What is the total transaction â€œpenetrationâ€ for each product? (hint: penetration = number of transactions where at least 1 quantity of a product was purchased divided by total number of transactions)
 select product_name, count(distinct txn_id)*100.0/(select count(distinct txn_id) from sales ) as penetration
 from sales s
 join product_details pd on s.prod_id = pd.product_id
@@ -134,7 +134,7 @@ where qty>=1
 group by product_name
 order by 2 desc
 
---11. What is the most common combination of at least 1 quantity of any 3 products in a 1 single transaction?
+--10. What is the most common combination of at least 1 quantity of any 3 products in a 1 single transaction?
 with base as (
 select s.txn_id,s.prod_id,product_name
 from sales s
